@@ -27,10 +27,23 @@ const Desktop = () => {
           <div className="flex flex-col">
             <Button
               onClick={() => {
-                window.open("https://github.com/tfrank11", "_blank");
+                window.open(
+                  "https://github.com/tfrank11/brainrot-gpt-web",
+                  "_blank"
+                );
               }}
             >
-              Github
+              Github - Frontend
+            </Button>
+            <Button
+              onClick={() => {
+                window.open(
+                  "https://github.com/tfrank11/brainrot-gpt-server",
+                  "_blank"
+                );
+              }}
+            >
+              Github - Server
             </Button>
             <Button
               onClick={() => {
