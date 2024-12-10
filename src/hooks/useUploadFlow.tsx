@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 
 interface Rtn {
   alert?: {
-    props: AlertProps;
+    props?: AlertProps;
     buttons: ModalButtons[];
   };
 }

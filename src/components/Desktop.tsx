@@ -11,7 +11,7 @@ const Desktop = () => {
   return (
     <ClippyProvider>
       <div>
-        {alert && (
+        {alert?.props && (
           <Alert
             className="w-80"
             {...alert.props}
