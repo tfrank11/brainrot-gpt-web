@@ -7,13 +7,12 @@ import { VideoType } from "@/types";
 import UploadPdf from "./SelectPdf";
 import VideoTypePicker from "./VideoTypePicker";
 import Landing from "./Landing";
-import Login from "./Login";
 import Loader from "./Loader";
 import VideoPlayer from "./VideoPlayer";
+import { Appwiz1502 } from "@react95/icons";
 
 enum Step {
   LANDING,
-  LOGIN,
   UPLOAD_PDF,
   PICK_VIDEO,
   LOADING,
@@ -61,9 +60,10 @@ const Menu = () => {
   return (
     // @ts-expect-error think its chill
     <Modal
+      icon={<Appwiz1502 variant="32x32_4" />}
       className="w-fit m-auto"
       type="info"
-      title="Brainrot GPT"
+      title="Brainrot GPT Wizard"
       style={{
         top: "50%",
         left: "50%",
@@ -74,14 +74,7 @@ const Menu = () => {
         {step === Step.LANDING && (
           <Landing
             onContinue={() => {
-              setStep(Step.LOGIN);
-            }}
-          />
-        )}
-        {step === Step.LOGIN && (
-          <Login
-            onBack={() => {
-              setStep(Step.LANDING);
+              setStep(Step.PICK_VIDEO);
             }}
           />
         )}
