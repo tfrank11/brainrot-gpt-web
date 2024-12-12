@@ -8,9 +8,7 @@ interface Props {
 const Landing: React.FC<Props> = ({ onContinue }) => {
   return (
     <div className="px-2 w-full flex flex-col gap-4">
-      <div className="text-xl mx-auto font-bold">
-        Welcome to Skibidi Studio.
-      </div>
+      <div className="text-xl mx-auto font-bold">Welcome to Brainrot GPT.</div>
       <div className="mx-auto text-md">
         This application turns PDFs into short-form brainrot videos.
       </div>

@@ -63,7 +63,7 @@ const Menu = () => {
     <Modal
       className="w-fit m-auto"
       type="info"
-      title="Skibidi Studio"
+      title="Brainrot GPT"
       style={{
         top: "50%",
         left: "50%",
