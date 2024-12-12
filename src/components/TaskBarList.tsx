@@ -24,23 +24,6 @@ const TaskBarList = () => {
       </Button>
       <Button
         onClick={() => {
-          window.open(
-            "https://www.linkedin.com/in/timmy-frank-97a867191/",
-            "_blank"
-          );
-        }}
-      >
-        Linkedin - Timmy
-      </Button>
-      <Button
-        onClick={() => {
-          window.open("https://www.linkedin.com/in/tiara-j/", "_blank");
-        }}
-      >
-        Linkedin - Tiara
-      </Button>
-      <Button
-        onClick={() => {
           const supabaseClient = createClient();
           supabaseClient.auth.signOut().then(() => {
             location.reload();
