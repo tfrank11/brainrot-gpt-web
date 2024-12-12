@@ -1,71 +1,20 @@
 "use client";
 import React from "react";
 import { ClippyProvider } from "@react95/clippy";
-import { Alert, Button, TaskBar } from "@react95/core";
-import { useUploadFlow } from "@/hooks/useUploadFlow";
+import { TaskBar } from "@react95/core";
+import AlertProvider from "./AlertProvider";
+import Menu from "./Menu";
+import TaskBarList from "./TaskBarList";
 import "@react95/icons/icons.css";
 
 const Desktop = () => {
-  const { alert } = useUploadFlow();
-
   return (
-    <ClippyProvider>
-      <div>
-        {alert?.props && (
-          <Alert
-            className="w-80"
-            {...alert.props}
-            onClick={() => {
-              //
-            }}
-            buttons={alert.buttons}
-          />
-        )}
-      </div>
-      <TaskBar
-        list={
-          <div className="flex flex-col">
-            <Button
-              onClick={() => {
-                window.open(
-                  "https://github.com/tfrank11/brainrot-gpt-web",
-                  "_blank"
-                );
-              }}
-            >
-              Github - Frontend
-            </Button>
-            <Button
-              onClick={() => {
-                window.open(
-                  "https://github.com/tfrank11/brainrot-gpt-server",
-                  "_blank"
-                );
-              }}
-            >
-              Github - Server
-            </Button>
-            <Button
-              onClick={() => {
-                window.open(
-                  "https://www.linkedin.com/in/timmy-frank-97a867191/",
-                  "_blank"
-                );
-              }}
-            >
-              Linkedin - Timmy
-            </Button>
-            <Button
-              onClick={() => {
-                window.open("https://www.linkedin.com/in/tiara-j/", "_blank");
-              }}
-            >
-              Linkedin - Tiara
-            </Button>
-          </div>
-        }
-      />
-    </ClippyProvider>
+    <AlertProvider>
+      <ClippyProvider>
+        <Menu />
+        <TaskBar list={<TaskBarList />} />
+      </ClippyProvider>
+    </AlertProvider>
   );
 };
 

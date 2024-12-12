@@ -13,12 +13,20 @@
     "@react95/clippy": "^2.0.2",
     "@react95/core": "^9.2.1",
     "@react95/icons": "^2.1.1",
+    "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.3",
+    "client-only": "^0.0.1",
+    "jose": "^5.9.6",
+    "jwt-decode": "^4.0.0",
+    "lodash-es": "^4.17.21",
     "next": "15.0.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "server-only": "^0.0.1",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
