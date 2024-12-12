@@ -12,7 +12,7 @@ const TopFiles = () => {
   const treeData = useMemo(() => {
     const files = inputs.map((v, i) => {
       return {
-        label: v.summary.slice(0, 20),
+        label: v.title,
         id: i,
         icon: <Mmsys119 variant="16x16_4" />,
         onClick: () => {

@@ -10,6 +10,7 @@ export type InputInfo = {
   pdf_id: string;
   transcript: string;
   summary: string;
+  title: string;
   video_type: VideoType;
 };
 
