@@ -29,6 +29,7 @@ export const useServerUpload = ({ onError }: Props) => {
   const { alert } = useAlertContext();
 
   const bootstrap = useCallback(() => {
+    wsRef.current?.close();
     wsRef.current = new WebSocket(WEBSOCKET_SERVER_HOST);
     setVideoId("");
     const onmessage = (ev: MessageEvent) => {
@@ -123,6 +124,7 @@ export const useServerUpload = ({ onError }: Props) => {
 
   const reset = useCallback(() => {
     setVideoId("");
+    bootstrap();
   }, []);
 
   return {
