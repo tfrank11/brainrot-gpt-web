@@ -6,11 +6,13 @@ import AlertProvider from "./AlertProvider";
 import Menu from "./Menu";
 import TaskBarList from "./TaskBarList";
 import "@react95/icons/icons.css";
+import TopFiles from "./TopFiles";
 
 const Desktop = () => {
   return (
     <AlertProvider>
       <ClippyProvider>
+        <TopFiles />
         <Menu />
         <TaskBar list={<TaskBarList />} />
       </ClippyProvider>

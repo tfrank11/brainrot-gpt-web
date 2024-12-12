@@ -37,21 +37,6 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
     getSrc();
   }, [user?.id, videoId]);
 
-  const handleCopyLink = async () => {
-    if (!src) {
-      alert("No video link available");
-      return;
-    }
-
-    try {
-      await navigator.clipboard.writeText(src);
-      alert("This link is valid for 24 hours!");
-    } catch (err) {
-      alert("Failed to copy link");
-      console.error("Copy link error:", err);
-    }
-  };
-
   return (
     <div className="flex flex-col gap-2">
       {src && (
@@ -75,7 +60,6 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
             Start Over
           </Button>
         )}
-        <Button onClick={handleCopyLink}>Copy Link</Button>
       </div>
     </div>
   );
