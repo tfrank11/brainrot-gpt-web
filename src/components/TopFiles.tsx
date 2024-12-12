@@ -67,7 +67,7 @@ const TopFiles = () => {
           <Modal
             className="w-fit m-auto"
             type="info"
-            title="File Explorer"
+            title="File Manager"
             hasWindowButton
             menu={[{ name: "File" }, { name: "Edit" }, { name: "View" }]}
             titleBarOptions={[
