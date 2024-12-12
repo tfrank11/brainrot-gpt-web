@@ -7,15 +7,16 @@ import { VideoType } from "@/types";
 
 interface Props {
   onSubmit: (videoType: VideoType) => void;
+  onBack: () => void;
 }
 
-const VideoTypePicker: React.FC<Props> = ({ onSubmit }) => {
+const VideoTypePicker: React.FC<Props> = ({ onSubmit, onBack }) => {
   const [selectedType, setSelectedType] = useState<VideoType>(
     VideoType.MINECRAFT
   );
 
   return (
-    <div className="">
+    <div className="flex flex-col">
       <div className="text-xl flex justify-around">Select video format</div>
       <div className="flex gap-20 mx-auto px-10 py-3">
         <div
@@ -68,9 +69,9 @@ const VideoTypePicker: React.FC<Props> = ({ onSubmit }) => {
           </RadioButton>
         </div>
       </div>
-      <div className="flex ">
+      <div className="flex justify-center gap-4">
+        <Button onClick={onBack}>Back</Button>
         <Button
-          className="mx-auto"
           onClick={() => {
             onSubmit(selectedType);
           }}

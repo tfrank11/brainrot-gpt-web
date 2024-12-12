@@ -93,7 +93,14 @@ const Menu = () => {
             }}
           />
         )}
-        {step === Step.PICK_VIDEO && <VideoTypePicker onSubmit={onSubmit} />}
+        {step === Step.PICK_VIDEO && (
+          <VideoTypePicker
+            onSubmit={onSubmit}
+            onBack={() => {
+              setStep(Step.UPLOAD_PDF);
+            }}
+          />
+        )}
         {step === Step.LOADING && <Loader uploadState={uploadState} />}
         {step === Step.VIDEO && (
           <VideoPlayer
