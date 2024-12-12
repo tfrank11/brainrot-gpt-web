@@ -6,9 +6,10 @@ import { useAlertContext } from "./AlertProvider";
 
 interface Props {
   videoId: string;
+  onRestart?: () => void;
 }
 
-const VideoPlayer: React.FC<Props> = ({ videoId }) => {
+const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
   const { user } = useUser();
   const [src, setSrc] = useState("");
   const { alert } = useAlertContext();
@@ -17,16 +18,16 @@ const VideoPlayer: React.FC<Props> = ({ videoId }) => {
     async function getSrc() {
       const uid = user?.id;
       if (!uid) {
-        alert("no user id found");
         return;
       }
       if (!videoId) {
-        alert("no video id");
+        return;
       }
       const supabase = createClient();
+      const path = `${uid}/${videoId}.mp4`;
       const { data, error } = await supabase.storage
         .from("videos")
-        .createSignedUrl(`${uid}/${videoId}`, 6000);
+        .createSignedUrl(path, 60 * 60 * 24);
       if (error) {
         alert(error.message);
         return;
@@ -36,17 +37,46 @@ const VideoPlayer: React.FC<Props> = ({ videoId }) => {
     getSrc();
   }, [user?.id, videoId]);
 
+  const handleCopyLink = async () => {
+    if (!src) {
+      alert("No video link available");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(src);
+      alert("This link is valid for 24 hours!");
+    } catch (err) {
+      alert("Failed to copy link");
+      console.error("Copy link error:", err);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-2">
-      <Video
-        w="320px"
-        className="text-xs"
-        videoProps={{
-          src,
-        }}
-        src={src} //this one doesnt seem to work
-      />
-      <Button>Start Over</Button>
+      {src && (
+        <Video
+          name="Video Player"
+          w="320px"
+          className="text-xs"
+          videoProps={{
+            src,
+          }}
+          src={src}
+        />
+      )}
+      <div className="flex gap-2 justify-around">
+        {onRestart && (
+          <Button
+            onClick={() => {
+              onRestart();
+            }}
+          >
+            Start Over
+          </Button>
+        )}
+        <Button onClick={handleCopyLink}>Copy Link</Button>
+      </div>
     </div>
   );
 };

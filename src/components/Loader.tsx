@@ -18,7 +18,12 @@ const Loader: React.FC<Props> = ({ uploadState }) => {
       case ServerResponseType.SUMMARY:
         return "Creating AI Voiceover";
       case ServerResponseType.AUDIO_DONE:
-        return "Creating Final Video";
+        return "Generating Captions";
+      case ServerResponseType.WORD_TIMINGS_DONE:
+        return "Processing Final Video";
+      case ServerResponseType.PROCESS_VIDEO_DONE:
+        return "Uploading to Supabase";
+      case ServerResponseType.VIDEO_DONE:
       case ServerResponseType.ERROR:
       default:
         return "";

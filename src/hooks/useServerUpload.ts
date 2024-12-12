@@ -15,7 +15,11 @@ import { useAlertContext } from "@/components/AlertProvider";
 const WEBSOCKET_SERVER_HOST =
   "wss://supabase-hackathon-brainrot-6fdcf6947d5b.herokuapp.com/ws";
 
-export const useServerUpload = () => {
+interface Props {
+  onError: () => void;
+}
+
+export const useServerUpload = ({ onError }: Props) => {
   const { user, session } = useUser();
   const [uploadState, setUploadState] = useState<ServerResponseType | null>(
     null
@@ -35,6 +39,10 @@ export const useServerUpload = () => {
       setUploadState(data.type);
       if (data.type === ServerResponseType.VIDEO_DONE) {
         setVideoId(data.video_id);
+      }
+      if (data.type === ServerResponseType.ERROR) {
+        alert(data.reason);
+        onError();
       }
     };
 
@@ -93,17 +101,34 @@ export const useServerUpload = () => {
     [alert, uploadFile, submitPdf]
   );
 
+  const heartbeat = useCallback(() => {
+    const payload: IServerRequest = {
+      type: ServerRequestType.HEARTBEAT,
+    };
+    wsRef.current?.send(JSON.stringify(payload));
+  }, []);
+
   useEffect(() => {
     bootstrap();
 
+    const id = setInterval(() => {
+      heartbeat();
+    }, 10_000);
+
     return () => {
+      clearInterval(id);
       wsRef.current?.close();
     };
   }, [bootstrap]);
+
+  const reset = useCallback(() => {
+    setVideoId("");
+  }, []);
 
   return {
     startUpload,
     uploadState,
     videoId,
+    reset,
   };
 };

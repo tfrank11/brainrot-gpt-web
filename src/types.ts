@@ -25,16 +25,21 @@ type NewVideoRequest = {
   video_type: VideoType;
 };
 
-export type IServerRequest = NewVideoRequest;
+type HeartbeatRequest = {
+  type: ServerRequestType.HEARTBEAT;
+};
+
+export type IServerRequest = NewVideoRequest | HeartbeatRequest;
 
 export enum ServerResponseType {
-  LOGIN_OK = 0,
-  TRANSCRIPT = 1,
-  SUMMARY = 2,
-  AUDIO_DONE = 3,
-  VIDEO_DONE = 4,
-  ERROR = 5,
-  HEARTBEAT = 6,
+  ERROR = 0,
+  LOGIN_OK = 1,
+  TRANSCRIPT = 2,
+  SUMMARY = 3,
+  AUDIO_DONE = 4,
+  WORD_TIMINGS_DONE = 5,
+  PROCESS_VIDEO_DONE = 6,
+  VIDEO_DONE = 7,
 }
 
 type LoginOkResponse = {

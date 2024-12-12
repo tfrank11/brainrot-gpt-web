@@ -23,7 +23,12 @@ enum Step {
 const Menu = () => {
   const [file, setFile] = useState<File | null>(null);
   const [step, setStep] = useState(Step.LANDING);
-  const { startUpload, uploadState, videoId } = useServerUpload();
+  const onError = useCallback(() => {
+    setStep(Step.UPLOAD_PDF);
+  }, []);
+  const { startUpload, uploadState, videoId, reset } = useServerUpload({
+    onError,
+  });
   const { user } = useUser();
   const { alert } = useAlertContext();
 
@@ -34,6 +39,12 @@ const Menu = () => {
       setStep(Step.LANDING);
     }
   }, [user]);
+
+  useEffect(() => {
+    if (videoId) {
+      setStep(Step.VIDEO);
+    }
+  }, [videoId]);
 
   const onSubmit = useCallback(
     (videoType: VideoType) => {
@@ -84,7 +95,15 @@ const Menu = () => {
         )}
         {step === Step.PICK_VIDEO && <VideoTypePicker onSubmit={onSubmit} />}
         {step === Step.LOADING && <Loader uploadState={uploadState} />}
-        {step === Step.VIDEO && <VideoPlayer videoId={videoId} />}
+        {step === Step.VIDEO && (
+          <VideoPlayer
+            videoId={videoId}
+            onRestart={() => {
+              setStep(Step.UPLOAD_PDF);
+              reset();
+            }}
+          />
+        )}
       </Modal.Content>
     </Modal>
   );
