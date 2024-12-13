@@ -3,6 +3,8 @@ import { Folder, Mmsys119, Computer4 } from "@react95/icons";
 import { Modal, TitleBar, Tree } from "@react95/core";
 import { useUserVideos } from "@/hooks/useUserVideos";
 import VideoPlayer from "./VideoPlayer";
+import SubwayPopup from "./SubwayPopup";
+import FolderFile from "./FolderFile";
 
 const TopFiles = () => {
   const [isFileBrowserOpen, setIsFileBrowserOpen] = useState(false);
@@ -21,47 +23,26 @@ const TopFiles = () => {
       };
     });
     return files;
-    // return [
-    //   {
-    //     label: "Desktop",
-    //     id: -2,
-    //     icon: <Folder variant="16x16_4" />,
-    //     children: [
-    //       {
-    //         label: "My Videos",
-    //         id: -1,
-    //         children: files,
-    //         icon: <Folder variant="16x16_4" />,
-    //       },
-    //     ],
-    //   },
-    // ];
   }, [inputs]);
+
+  const [isSubwayOpen, setIsSubwayOpen] = useState(false);
 
   return (
     <>
+      {isSubwayOpen && <SubwayPopup />}
       <div className="flex gap-4 pt-40 pl-20">
-        <div
-          className="flex flex-col gap-1 cursor-pointer"
-          onClick={() => {
-            window.open(
-              "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
-              "_blank"
-            );
-          }}
-        >
-          <Folder className="mx-auto" variant="32x32_4" />
-          <div>API Keys</div>
-        </div>
-        <div
-          className="flex flex-col gap-1 cursor-pointer"
+        <FolderFile
+          name="My Videos"
           onClick={() => {
             setIsFileBrowserOpen(true);
           }}
-        >
-          <Folder className="mx-auto" variant="32x32_4" />
-          <div>My Videos</div>
-        </div>
+        />
+        <FolderFile
+          name="Im Bored"
+          onClick={() => {
+            setIsSubwayOpen(true);
+          }}
+        />
         {isFileBrowserOpen && (
           // @ts-expect-error think its chill
           <Modal
@@ -77,14 +58,9 @@ const TopFiles = () => {
               />,
             ]}
           >
-            <Modal.Content className="w-64 h-36">
+            <Modal.Content className="w-64 min-h-36">
               <Tree
                 data={treeData}
-                // root={{
-                //   id: -3,
-                //   label: "My Computer",
-                //   icon: <Computer4 variant="16x16_4" />,
-                // }}
                 root={{
                   label: "My Videos",
                   id: -1,

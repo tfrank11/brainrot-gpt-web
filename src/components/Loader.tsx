@@ -41,6 +41,9 @@ const Loader: React.FC<Props> = ({ uploadState }) => {
           height={100}
         />
       </div>
+      <div className="mx-auto text-[10px]">
+        This should take 1 - 1.5 minutes
+      </div>
     </div>
   );
 };

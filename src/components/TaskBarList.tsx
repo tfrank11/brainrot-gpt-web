@@ -10,7 +10,7 @@ const TaskBarList = () => {
           window.open("https://github.com/tfrank11/brainrot-gpt-web", "_blank");
         }}
       >
-        Github - Frontend
+        Frontend
       </Button>
       <Button
         onClick={() => {
@@ -20,7 +20,7 @@ const TaskBarList = () => {
           );
         }}
       >
-        Github - Server
+        Server
       </Button>
       <Button
         onClick={() => {
