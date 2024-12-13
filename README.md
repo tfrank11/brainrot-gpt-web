@@ -2,6 +2,8 @@
 
 Turn PDFs into short form, digestible videos. Perfect if you have a sub-30 second attention span. 
 
+[Live Site](https://brainrot-gpt-53atjhfps-tfrank11s-projects.vercel.app/)
+
 ![BrainRot Preview](public/brainrot-preview.png)
 
 ## Technology Stack
@@ -13,8 +15,6 @@ Turn PDFs into short form, digestible videos. Perfect if you have a sub-30 secon
 [![React95](https://img.shields.io/badge/Deepgram-grey)](https://deepgram.com/)
 [![React95](https://img.shields.io/badge/ElevenLabs-grey)](https://elevenlabs.io/)
 [![React95](https://img.shields.io/badge/OpenAI-4o--mini-blue)](https://openai.com/api/)
-
-
 
 
 ## User Guide
