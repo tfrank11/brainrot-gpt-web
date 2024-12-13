@@ -4,7 +4,7 @@ Turn PDFs into short form, digestible videos. Perfect if you have a sub-30 secon
 
 [Live Site](https://brainrot-gpt-53atjhfps-tfrank11s-projects.vercel.app/)
 
-![BrainRot Preview](public/brainrot-preview.png)
+<img src="public/brainrot-preview.png" width="400" >
 
 ## Technology Stack
 
