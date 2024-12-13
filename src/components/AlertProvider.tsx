@@ -5,11 +5,18 @@ interface Props {
   children: React.ReactNode;
 }
 
-const AlertContext = createContext({
+interface IAlertContext {
+  message: string;
+  setMessage: (v: string) => void;
+  isOpen: boolean;
+  setIsOpen: (v: boolean) => void;
+}
+
+const AlertContext = createContext<IAlertContext>({
   message: "",
-  setMessage: (v: string) => {},
+  setMessage: () => {},
   isOpen: false,
-  setIsOpen: (v: boolean) => {},
+  setIsOpen: () => {},
 });
 
 const AlertProvider: React.FC<Props> = ({ children }) => {
@@ -39,10 +46,13 @@ const AlertProvider: React.FC<Props> = ({ children }) => {
 
 export const useAlertContext = () => {
   const { setIsOpen, setMessage } = useContext(AlertContext);
-  const alert = useCallback((message: string) => {
-    setMessage(message);
-    setIsOpen(true);
-  }, []);
+  const alert = useCallback(
+    (message: string) => {
+      setMessage(message);
+      setIsOpen(true);
+    },
+    [setIsOpen, setMessage]
+  );
 
   return { alert };
 };

@@ -3,11 +3,7 @@ import { Button } from "@react95/core";
 import { createClient } from "@/lib/supabase/client";
 import { useSearchParams } from "next/navigation";
 
-interface Props {
-  onContinue: () => void;
-}
-
-const Landing: React.FC<Props> = ({ onContinue }) => {
+const Landing: React.FC = () => {
   const supabase = createClient();
   const searchParams = useSearchParams();
 

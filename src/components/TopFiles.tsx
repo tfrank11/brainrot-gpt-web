@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Folder, Mmsys119, Computer4 } from "@react95/icons";
+import { Folder, Mmsys119 } from "@react95/icons";
 import { Modal, TitleBar, Tree } from "@react95/core";
 import { useUserVideos } from "@/hooks/useUserVideos";
 import VideoPlayer from "./VideoPlayer";

@@ -1,6 +1,6 @@
 import { useServerUpload } from "@/hooks/useServerUpload";
 import { useUser } from "@/hooks/useUser";
-import { Modal, Video } from "@react95/core";
+import { Modal } from "@react95/core";
 import React, { useCallback, useEffect, useState } from "react";
 import { useAlertContext } from "./AlertProvider";
 import { VideoType } from "@/types";
@@ -71,13 +71,7 @@ const Menu = () => {
       }}
     >
       <Modal.Content>
-        {step === Step.LANDING && (
-          <Landing
-            onContinue={() => {
-              setStep(Step.PICK_VIDEO);
-            }}
-          />
-        )}
+        {step === Step.LANDING && <Landing />}
         {step === Step.UPLOAD_PDF && (
           <UploadPdf
             onSelectFile={(file) => {

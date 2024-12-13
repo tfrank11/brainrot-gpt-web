@@ -49,7 +49,7 @@ export const useServerUpload = ({ onError }: Props) => {
 
     wsRef.current.onmessage = onmessage;
     wsRef.current.onerror = console.warn;
-  }, []);
+  }, [alert, onError]);
 
   const uploadFile = useCallback(
     async (file: File, pdfId: string) => {
@@ -120,12 +120,12 @@ export const useServerUpload = ({ onError }: Props) => {
       clearInterval(id);
       wsRef.current?.close();
     };
-  }, [bootstrap]);
+  }, [bootstrap, heartbeat]);
 
   const reset = useCallback(() => {
     setVideoId("");
     bootstrap();
-  }, []);
+  }, [bootstrap]);
 
   return {
     startUpload,

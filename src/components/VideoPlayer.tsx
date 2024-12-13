@@ -35,7 +35,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
       setSrc(data.signedUrl);
     }
     getSrc();
-  }, [user?.id, videoId]);
+  }, [user?.id, videoId, alert]);
 
   return (
     <div className="flex flex-col gap-2">
