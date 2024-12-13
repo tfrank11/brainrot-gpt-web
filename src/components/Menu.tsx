@@ -1,7 +1,7 @@
 import { useServerUpload } from "@/hooks/useServerUpload";
 import { useUser } from "@/hooks/useUser";
 import { Modal } from "@react95/core";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useState } from "react";
 import { useAlertContext } from "./AlertProvider";
 import { VideoType } from "@/types";
 import UploadPdf from "./SelectPdf";
@@ -58,48 +58,50 @@ const Menu = () => {
   );
 
   return (
-    // @ts-expect-error think its chill
-    <Modal
-      icon={<Appwiz1502 variant="32x32_4" />}
-      className="w-fit m-auto"
-      type="info"
-      title="Brainrot GPT Wizard"
-      style={{
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      <Modal.Content>
-        {step === Step.LANDING && <Landing />}
-        {step === Step.UPLOAD_PDF && (
-          <UploadPdf
-            onSelectFile={(file) => {
-              setFile(file);
-              setStep(Step.PICK_VIDEO);
-            }}
-          />
-        )}
-        {step === Step.PICK_VIDEO && (
-          <VideoTypePicker
-            onSubmit={onSubmit}
-            onBack={() => {
-              setStep(Step.UPLOAD_PDF);
-            }}
-          />
-        )}
-        {step === Step.LOADING && <Loader uploadState={uploadState} />}
-        {step === Step.VIDEO && (
-          <VideoPlayer
-            videoId={videoId}
-            onRestart={() => {
-              setStep(Step.UPLOAD_PDF);
-              reset();
-            }}
-          />
-        )}
-      </Modal.Content>
-    </Modal>
+    <Suspense>
+      {/* @ts-expect-error think its chill */}
+      <Modal
+        icon={<Appwiz1502 variant="32x32_4" />}
+        className="w-fit m-auto"
+        type="info"
+        title="Brainrot GPT Wizard"
+        style={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <Modal.Content>
+          {step === Step.LANDING && <Landing />}
+          {step === Step.UPLOAD_PDF && (
+            <UploadPdf
+              onSelectFile={(file) => {
+                setFile(file);
+                setStep(Step.PICK_VIDEO);
+              }}
+            />
+          )}
+          {step === Step.PICK_VIDEO && (
+            <VideoTypePicker
+              onSubmit={onSubmit}
+              onBack={() => {
+                setStep(Step.UPLOAD_PDF);
+              }}
+            />
+          )}
+          {step === Step.LOADING && <Loader uploadState={uploadState} />}
+          {step === Step.VIDEO && (
+            <VideoPlayer
+              videoId={videoId}
+              onRestart={() => {
+                setStep(Step.UPLOAD_PDF);
+                reset();
+              }}
+            />
+          )}
+        </Modal.Content>
+      </Modal>
+    </Suspense>
   );
 };
 
