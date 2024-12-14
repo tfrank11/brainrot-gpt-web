@@ -66,6 +66,9 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart, asModal }) => {
           className="text-xs"
           videoProps={{
             src,
+            autoPlay: true,
+            muted: false,
+            playsInline: true,
           }}
           src={src}
         />
