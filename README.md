@@ -8,14 +8,14 @@ Turn PDFs into short form, digestible videos. Perfect if you have a sub-30 secon
 
 ## Technology Stack
 
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
-
-[![React95](https://img.shields.io/badge/Deepgram-grey)](https://deepgram.com/)
-[![React95](https://img.shields.io/badge/ElevenLabs-grey)](https://elevenlabs.io/)
-[![React95](https://img.shields.io/badge/OpenAI-4o--mini-blue)](https://openai.com/api/)
-
+[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+[![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=fff)](https://supabase.com/)
+[![Deepgram](https://img.shields.io/badge/Deepgram-black)](https://deepgram.com/)
+[![ElevenLabs](https://img.shields.io/badge/ElevenLabs-white)](https://elevenlabs.io/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-grey)](https://openai.com/api/)
+[![Heroku](https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=fffe)](#)
+[![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?logo=vercel&logoColor=white)](#)
 
 ## User Guide
 - Login
