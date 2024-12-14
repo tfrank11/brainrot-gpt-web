@@ -72,7 +72,7 @@ const TopFiles = () => {
           </Modal>
         )}
       </div>
-      {videoId && <VideoPlayer videoId={videoId} />}
+      {videoId && <VideoPlayer videoId={videoId} asModal />}
     </>
   );
 };

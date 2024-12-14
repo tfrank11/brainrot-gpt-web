@@ -8,9 +8,28 @@ import { Appwiz1502 } from "@react95/icons";
 interface Props {
   videoId: string;
   onRestart?: () => void;
+  asModal?: boolean;
 }
 
-const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
+const ModalWrapper: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  return (
+    // @ts-expect-error its aight
+    <Modal
+      icon={<Appwiz1502 variant="32x32_4" />}
+      className="w-fit m-auto left-1/2"
+      // top-1/2 doesnt work here for some reason
+      style={{ top: "50%" }}
+      type="info"
+      title="Video Player"
+    >
+      <Modal.Content>{children}</Modal.Content>
+    </Modal>
+  );
+};
+
+const VideoPlayer: React.FC<Props> = ({ videoId, onRestart, asModal }) => {
   const { user } = useUser();
   const [src, setSrc] = useState("");
   const { alert } = useAlertContext();
@@ -38,59 +57,49 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
     getSrc();
   }, [user?.id, videoId, alert]);
 
-  return (
-    // @ts-expect-error its aight
-    <Modal
-      icon={<Appwiz1502 variant="32x32_4" />}
-      className="w-fit m-auto left-1/2"
-      // top-1/2 doesnt work here for some reason
-      style={{ top: "50%" }}
-      type="info"
-      title="Video Player"
-    >
-      <Modal.Content>
-        <div className="flex flex-col gap-2">
-          {src && (
-            <Video
-              name=" "
-              w="320px"
-              className="text-xs"
-              videoProps={{
-                src,
-              }}
-              src={src}
-            />
-          )}
-          <div className="flex gap-2 justify-around">
-            {onRestart && (
-              <Button
-                onClick={() => {
-                  onRestart();
-                }}
-              >
-                Start Over
-              </Button>
-            )}
-            {src && (
-              <Button
-                onClick={() => {
-                  const link = document.createElement("a");
-                  link.target = "_blank";
-                  link.href = src;
-                  link.download = `${videoId}.mp4`;
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-              >
-                Download
-              </Button>
-            )}
-          </div>
-        </div>
-      </Modal.Content>
-    </Modal>
+  const component = (
+    <div className="flex flex-col gap-2">
+      {src && (
+        <Video
+          name=" "
+          w="320px"
+          className="text-xs"
+          videoProps={{
+            src,
+          }}
+          src={src}
+        />
+      )}
+      <div className="flex gap-2 justify-around">
+        {onRestart && (
+          <Button
+            onClick={() => {
+              onRestart();
+            }}
+          >
+            Start Over
+          </Button>
+        )}
+        {src && (
+          <Button
+            onClick={() => {
+              const link = document.createElement("a");
+              link.target = "_blank";
+              link.href = src;
+              link.download = `${videoId}.mp4`;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
+          >
+            Download
+          </Button>
+        )}
+      </div>
+    </div>
   );
+
+  return asModal ? <ModalWrapper>{component}</ModalWrapper> : component;
 };
 
 export default VideoPlayer;
