@@ -20,7 +20,7 @@ const TaskBarList = () => {
           );
         }}
       >
-        Server
+        Backend
       </Button>
       <Button
         onClick={() => {
