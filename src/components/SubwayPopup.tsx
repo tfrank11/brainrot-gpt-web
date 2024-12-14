@@ -5,14 +5,11 @@ const SubwayPopup = () => {
   return (
     // @ts-expect-error think its chill
     <Modal
-      className="w-fit m-auto"
+      className="w-fit m-auto left-1/2"
+      // top-1/2 doesnt work here for some reason
+      style={{ top: "50%" }}
       type="info"
       title="Im Bored"
-      style={{
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
     >
       <Modal.Content>
         <Video

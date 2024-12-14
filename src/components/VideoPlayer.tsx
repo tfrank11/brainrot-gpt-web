@@ -42,14 +42,11 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
     // @ts-expect-error its aight
     <Modal
       icon={<Appwiz1502 variant="32x32_4" />}
-      className="w-fit m-auto"
+      className="w-fit m-auto left-1/2"
+      // top-1/2 doesnt work here for some reason
+      style={{ top: "50%" }}
       type="info"
       title="Video Player"
-      style={{
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
     >
       <Modal.Content>
         <div className="flex flex-col gap-2">
