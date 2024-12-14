@@ -39,7 +39,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
   }, [user?.id, videoId, alert]);
 
   return (
-    // @ts-expect-error fck this error
+    // @ts-expect-error its aight
     <Modal
       icon={<Appwiz1502 variant="32x32_4" />}
       className="w-fit m-auto"
