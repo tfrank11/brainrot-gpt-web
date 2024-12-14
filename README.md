@@ -2,7 +2,7 @@
 
 Turn PDFs into short form, digestible videos. Perfect if you have a sub-30 second attention span.
 
-### [Live Demo](https://brainrot-gpt-53atjhfps-tfrank11s-projects.vercel.app/)
+### [Live Demo](https://www.brainrot-gpt.com/)
 
 ![BrainRot Preview](public/brainrot-preview.png)
 
