@@ -44,7 +44,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
       icon={<Appwiz1502 variant="32x32_4" />}
       className="w-fit m-auto"
       type="info"
-      title="Brainrot GPT Wizard"
+      title="Video Player"
       style={{
         top: "50%",
         left: "50%",
@@ -55,7 +55,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId, onRestart }) => {
         <div className="flex flex-col gap-2">
           {src && (
             <Video
-              name="Video Player"
+              name=" "
               w="320px"
               className="text-xs"
               videoProps={{
