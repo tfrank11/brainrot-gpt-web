@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Folder, Mmsys119 } from "@react95/icons";
+import { Explorer101, Folder, Mmsys119 } from "@react95/icons";
 import { Modal, TitleBar, Tree } from "@react95/core";
 import { useUserVideos } from "@/hooks/useUserVideos";
 import VideoPlayer from "./VideoPlayer";
@@ -51,6 +51,7 @@ const TopFiles = () => {
             title="File Manager"
             hasWindowButton
             menu={[{ name: "File" }, { name: "Edit" }, { name: "View" }]}
+            icon={<Explorer101 variant="32x32_4" />}
             titleBarOptions={[
               <TitleBar.Close
                 key="close"
