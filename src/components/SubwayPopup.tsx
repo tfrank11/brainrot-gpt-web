@@ -5,9 +5,9 @@ const SubwayPopup = () => {
   return (
     // @ts-expect-error think its chill
     <Modal
-      className="w-fit m-auto left-1/2"
-      // top-1/2 doesnt work here for some reason
-      style={{ top: "50%" }}
+      className="w-fit m-auto left-1/3"
+      // tailwind top-x doesnt work here for whatever reason
+      style={{ top: "40%" }}
       type="info"
       title="Im Bored"
     >

@@ -62,9 +62,9 @@ const Menu = () => {
       {/* @ts-expect-error think its chill */}
       <Modal
         icon={<Appwiz1502 variant="32x32_4" />}
-        className="w-fit m-auto left-1/2"
-        // top-1/2 doesnt work here for some reason
-        style={{ top: "50%" }}
+        className="w-fit m-auto left-1/3"
+        // tailwind top-x doesnt work here for whatever reason
+        style={{ top: "40%" }}
         type="info"
         title="Brainrot GPT Wizard"
       >
