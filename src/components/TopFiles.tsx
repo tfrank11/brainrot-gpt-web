@@ -43,6 +43,15 @@ const TopFiles = () => {
             setIsSubwayOpen(true);
           }}
         />
+        <FolderFile
+          name="Source Code"
+          onClick={() => {
+            window.open(
+              "https://github.com/tfrank11/brainrot-gpt-web",
+              "_blank"
+            );
+          }}
+        />
         {isFileBrowserOpen && (
           // @ts-expect-error think its chill
           <Modal
