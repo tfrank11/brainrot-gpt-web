@@ -17,7 +17,7 @@ const Menu = () => {
         <Modal.Content>
           <div className="px-2 w-full flex flex-col gap-4">
             <div className="mx-auto text-md">
-              Im no longer running this but feel free to check out the{" "}
+              Im no longer hosting this but feel free to check out the{" "}
               <a
                 href="https://github.com/tfrank11/brainrot-gpt-server"
                 target="_blank"
